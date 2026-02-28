@@ -1,0 +1,368 @@
+/* =================================================================
+   LubeSoft POS - Main Stylesheet
+   Dark sidebar + clean white content area
+   ================================================================= */
+
+/* ---- Root & defaults ---- */
+.root {
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 13px;
+    -fx-background-color: #f0f2f5;
+}
+
+/* ---- Sidebar ---- */
+.sidebar {
+    -fx-background-color: #2c3e50;
+    -fx-pref-width: 200px;
+}
+
+.sidebar-header {
+    -fx-background-color: #1a252f;
+}
+
+.sidebar-title {
+    -fx-text-fill: white;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.sidebar-subtitle {
+    -fx-text-fill: #95a5a6;
+    -fx-font-size: 11px;
+}
+
+.sidebar-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #bdc3c7;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 14px 20px;
+    -fx-font-size: 13px;
+    -fx-border-width: 0;
+    -fx-cursor: hand;
+}
+
+.sidebar-btn:hover {
+    -fx-background-color: #34495e;
+    -fx-text-fill: white;
+}
+
+.sidebar-active {
+    -fx-background-color: #3498db !important;
+    -fx-text-fill: white !important;
+}
+
+.sidebar-footer {
+    -fx-background-color: #1a252f;
+}
+
+.sidebar-user {
+    -fx-text-fill: #95a5a6;
+    -fx-font-size: 12px;
+    -fx-padding: 0 0 6px 0;
+}
+
+.logout-button {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+    -fx-padding: 6px 12px;
+}
+
+.logout-button:hover {
+    -fx-background-color: #c0392b;
+}
+
+/* ---- Content area ---- */
+.content-area {
+    -fx-background-color: #f0f2f5;
+}
+
+.content-view {
+    -fx-background-color: #f0f2f5;
+}
+
+/* ---- Login & Activation ---- */
+.login-root, .activation-root {
+    -fx-background-color: #2c3e50;
+}
+
+.login-card {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 20, 0, 0, 6);
+}
+
+.login-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.login-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #7f8c8d;
+}
+
+.login-field {
+    -fx-pref-height: 38px;
+    -fx-background-radius: 4;
+    -fx-border-color: #dde1e7;
+    -fx-border-radius: 4;
+    -fx-padding: 0 10px;
+    -fx-font-size: 13px;
+}
+
+.login-field:focused {
+    -fx-border-color: #3498db;
+}
+
+/* ---- Buttons ---- */
+.primary-button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-background-radius: 4;
+    -fx-padding: 8px 16px;
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+}
+
+.primary-button:hover {
+    -fx-background-color: #2980b9;
+}
+
+.secondary-button {
+    -fx-background-color: #ecf0f1;
+    -fx-text-fill: #2c3e50;
+    -fx-background-radius: 4;
+    -fx-padding: 8px 16px;
+    -fx-cursor: hand;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 4;
+}
+
+.secondary-button:hover {
+    -fx-background-color: #d5dbdb;
+}
+
+.danger-button {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+    -fx-background-radius: 4;
+    -fx-padding: 8px 16px;
+    -fx-cursor: hand;
+}
+
+.danger-button:hover {
+    -fx-background-color: #c0392b;
+}
+
+.link-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #3498db;
+    -fx-cursor: hand;
+    -fx-padding: 4px;
+    -fx-border-width: 0;
+}
+
+.link-button:hover {
+    -fx-text-fill: #2980b9;
+}
+
+.checkout-btn {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-pref-height: 44px;
+    -fx-background-color: #27ae60;
+}
+
+.checkout-btn:hover {
+    -fx-background-color: #219a52;
+}
+
+/* ---- Labels ---- */
+.page-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.section-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #34495e;
+    -fx-padding: 4px 0 0 0;
+}
+
+.error-label {
+    -fx-text-fill: #e74c3c;
+    -fx-font-size: 12px;
+}
+
+.trial-label {
+    -fx-text-fill: #e67e22;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.amount-label {
+    -fx-font-size: 13px;
+    -fx-text-fill: #2c3e50;
+}
+
+.total-label {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.total-value {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #27ae60;
+}
+
+.invoice-number {
+    -fx-font-weight: bold;
+    -fx-text-fill: #3498db;
+    -fx-font-size: 14px;
+}
+
+.vehicle-info {
+    -fx-text-fill: #27ae60;
+    -fx-font-weight: bold;
+}
+
+.machine-id {
+    -fx-font-family: monospace;
+    -fx-font-size: 11px;
+    -fx-text-fill: #2c3e50;
+    -fx-background-color: #f0f2f5;
+    -fx-padding: 4px 8px;
+    -fx-background-radius: 4;
+}
+
+.clock-status {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #27ae60;
+}
+
+.balance-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #e74c3c;
+}
+
+.hint-label {
+    -fx-text-fill: #7f8c8d;
+    -fx-font-style: italic;
+}
+
+.loading-label {
+    -fx-text-fill: #7f8c8d;
+}
+
+/* ---- KPI cards ---- */
+.kpi-card {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-padding: 16px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 8, 0, 0, 2);
+    -fx-min-height: 80;
+}
+
+.kpi-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #7f8c8d;
+}
+
+.kpi-value {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.kpi-warning {
+    -fx-text-fill: #e67e22;
+}
+
+.kpi-danger {
+    -fx-text-fill: #e74c3c;
+}
+
+/* ---- Tables ---- */
+.table-view {
+    -fx-background-color: white;
+    -fx-background-radius: 6;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 6, 0, 0, 2);
+}
+
+.table-view .column-header {
+    -fx-background-color: #f8f9fa;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #f8f9fa;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #fafafa;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #d6eaf8;
+    -fx-text-fill: #2c3e50;
+}
+
+/* ---- Toolbar / headers ---- */
+.toolbar {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 4, 0, 0, 2);
+}
+
+.pos-header {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 4, 0, 0, 2);
+}
+
+/* ---- POS layout ---- */
+.pos-left {
+    -fx-background-color: #f0f2f5;
+}
+
+.pos-right {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 8, 0, 0, 0);
+}
+
+/* ---- Form panels ---- */
+.form-panel {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 6, 0, 0, 2);
+}
+
+/* ---- Text fields ---- */
+.text-field, .password-field, .combo-box, .date-picker {
+    -fx-background-radius: 4;
+    -fx-border-color: #dde1e7;
+    -fx-border-radius: 4;
+    -fx-pref-height: 32px;
+    -fx-padding: 0 8px;
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #3498db;
+}
+
+/* ---- Tab pane ---- */
+.tab-pane .tab {
+    -fx-background-color: #ecf0f1;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: #3498db;
+}
+
+.tab-pane .tab:selected .tab-label {
+    -fx-text-fill: white;
+}

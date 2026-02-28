@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.sunjavatech.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.lubesoft.controller.ActivationController"
+            styleClass="activation-root">
+    <center>
+        <VBox spacing="16" alignment="CENTER" maxWidth="500"
+              styleClass="login-card">
+            <padding><Insets top="40" right="40" bottom="40" left="40"/></padding>
+
+            <Label text="License Activation" styleClass="login-title"/>
+            <Label text="LubeSoft POS" styleClass="login-subtitle"/>
+
+            <Label fx:id="statusLabel" text="" styleClass="trial-label"/>
+
+            <VBox spacing="4">
+                <Label text="Your Machine ID:" styleClass="field-label"/>
+                <HBox spacing="8">
+                    <Label fx:id="machineIdLabel" text="Loading..." styleClass="machine-id"
+                           HBox.hgrow="ALWAYS" wrapText="true"/>
+                    <Button text="Copy" onAction="#handleCopyMachineId" styleClass="secondary-button"/>
+                </HBox>
+            </VBox>
+
+            <Separator/>
+
+            <VBox spacing="4">
+                <Label text="License Key:" styleClass="field-label"/>
+                <TextField fx:id="licenseKeyField" promptText="Paste license key here"
+                           styleClass="login-field"/>
+            </VBox>
+
+            <Button fx:id="activateButton" text="Activate" onAction="#handleActivate"
+                    styleClass="primary-button" maxWidth="Infinity"/>
+            <Button text="Continue with Trial" onAction="#handleSkip"
+                    styleClass="link-button"/>
+        </VBox>
+    </center>
+</BorderPane>

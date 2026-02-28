@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.sunjavatech.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.lubesoft.controller.POSController"
+            styleClass="content-view">
+    <top>
+        <HBox styleClass="pos-header" spacing="16" alignment="CENTER_LEFT">
+            <padding><Insets top="12" right="16" bottom="12" left="16"/></padding>
+            <Label text="Point of Sale" styleClass="page-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label text="Invoice: " styleClass="label"/>
+            <Label fx:id="invoiceNumberLabel" text="-" styleClass="invoice-number"/>
+            <Button text="New Invoice" onAction="#newInvoice" styleClass="secondary-button"/>
+        </HBox>
+    </top>
+
+    <center>
+        <HBox spacing="0">
+            <!-- Left: product search + items -->
+            <VBox spacing="8" HBox.hgrow="ALWAYS" styleClass="pos-left">
+                <padding><Insets top="12" right="8" bottom="12" left="16"/></padding>
+
+                <!-- Vehicle lookup -->
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <Label text="Plate:"/>
+                    <TextField fx:id="plateField" promptText="License plate" prefWidth="140"/>
+                    <Button text="Lookup" onAction="#handlePlateLookup" styleClass="secondary-button"/>
+                    <Label fx:id="vehicleLabel" text="No vehicle" styleClass="vehicle-info"/>
+                </HBox>
+
+                <!-- Barcode / product search -->
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <TextField fx:id="barcodeField" promptText="Scan barcode..." prefWidth="200"
+                               onAction="#handleBarcodeSearch"/>
+                    <Button text="Add" onAction="#handleBarcodeSearch" styleClass="secondary-button"/>
+                    <TextField fx:id="searchField" promptText="Search product..." prefWidth="200"
+                               onAction="#handleProductSearch"/>
+                    <Button text="Search" onAction="#handleProductSearch" styleClass="secondary-button"/>
+                </HBox>
+
+                <!-- Product search results -->
+                <TableView fx:id="productSearchTable" prefHeight="160">
+                    <columns>
+                        <TableColumn fx:id="colProdName" text="Product" prefWidth="260"/>
+                        <TableColumn fx:id="colProdSku" text="SKU" prefWidth="100"/>
+                        <TableColumn fx:id="colProdPrice" text="Price" prefWidth="90"/>
+                        <TableColumn fx:id="colProdStock" text="Stock" prefWidth="70"/>
+                    </columns>
+                </TableView>
+
+                <!-- Invoice items -->
+                <Label text="Invoice Items" styleClass="section-title"/>
+                <TableView fx:id="itemsTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colItemDesc" text="Description" prefWidth="300"/>
+                        <TableColumn fx:id="colItemQty" text="Qty" prefWidth="70"/>
+                        <TableColumn fx:id="colItemPrice" text="Price" prefWidth="90"/>
+                        <TableColumn fx:id="colItemTotal" text="Total" prefWidth="100"/>
+                    </columns>
+                </TableView>
+                <HBox spacing="8">
+                    <Button text="Remove Item" onAction="#handleRemoveItem" styleClass="danger-button"/>
+                </HBox>
+
+                <!-- DVI Checklist -->
+                <TitledPane text="DVI Checklist" expanded="false">
+                    <GridPane hgap="8" vgap="8">
+                        <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+                        <Label text="Air Filter:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <ComboBox fx:id="airFilterCombo" prefWidth="120" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                        <Label text="Wipers:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <ComboBox fx:id="wipersCombo" prefWidth="120" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                        <Label text="Fluid Levels:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                        <ComboBox fx:id="fluidLevelsCombo" prefWidth="120" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+                        <Label text="Tires:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                        <ComboBox fx:id="tiresCombo" prefWidth="120" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+                    </GridPane>
+                </TitledPane>
+            </VBox>
+
+            <!-- Right: WIP queue + payment -->
+            <VBox spacing="8" prefWidth="300" styleClass="pos-right">
+                <padding><Insets top="12" right="16" bottom="12" left="8"/></padding>
+
+                <Label text="WIP Queue" styleClass="section-title"/>
+                <ListView fx:id="wipList" prefHeight="200"/>
+                <Button text="Resume Selected" onAction="#handleResumeSelected" styleClass="secondary-button" maxWidth="Infinity"/>
+
+                <Separator/>
+
+                <Label text="Payment" styleClass="section-title"/>
+                <GridPane hgap="8" vgap="6">
+                    <Label text="Subtotal:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <Label fx:id="subtotalLabel" text="0.00" GridPane.rowIndex="0" GridPane.columnIndex="1" styleClass="amount-label"/>
+                    <Label text="Tax:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <Label fx:id="taxLabel" text="0.00" GridPane.rowIndex="1" GridPane.columnIndex="1" styleClass="amount-label"/>
+                    <Label text="Discount:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <TextField fx:id="discountField" text="0" prefWidth="100" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                    <Label text="TOTAL:" GridPane.rowIndex="3" GridPane.columnIndex="0" styleClass="total-label"/>
+                    <Label fx:id="totalLabel" text="0.00" GridPane.rowIndex="3" GridPane.columnIndex="1" styleClass="total-value"/>
+                </GridPane>
+
+                <ComboBox fx:id="paymentMethodCombo" maxWidth="Infinity"/>
+                <TextField fx:id="amountPaidField" promptText="Amount paid" maxWidth="Infinity"/>
+
+                <Button text="CHECKOUT" onAction="#handleCheckout" styleClass="primary-button checkout-btn" maxWidth="Infinity"/>
+                <Button text="Hold Invoice" onAction="#handleHold" styleClass="secondary-button" maxWidth="Infinity"/>
+                <Button text="Void Invoice" onAction="#handleVoidInvoice" styleClass="danger-button" maxWidth="Infinity"/>
+                <Button text="Print / Export PDF" onAction="#handlePrintInvoice" styleClass="secondary-button" maxWidth="Infinity"/>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>

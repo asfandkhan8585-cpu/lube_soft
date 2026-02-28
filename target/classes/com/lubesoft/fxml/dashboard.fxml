@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.sunjavatech.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.lubesoft.controller.DashboardController"
+      spacing="16" styleClass="content-view">
+    <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
+
+    <Label fx:id="welcomeLabel" text="Welcome!" styleClass="page-title"/>
+
+    <!-- KPI Cards -->
+    <HBox spacing="16">
+        <VBox styleClass="kpi-card" HBox.hgrow="ALWAYS">
+            <Label text="Today's Sales" styleClass="kpi-label"/>
+            <Label fx:id="todaySalesLabel" text="0.00" styleClass="kpi-value"/>
+        </VBox>
+        <VBox styleClass="kpi-card" HBox.hgrow="ALWAYS">
+            <Label text="Low Stock Items" styleClass="kpi-label"/>
+            <Label fx:id="lowStockLabel" text="0" styleClass="kpi-value kpi-warning"/>
+        </VBox>
+        <VBox styleClass="kpi-card" HBox.hgrow="ALWAYS">
+            <Label text="Pending Credits" styleClass="kpi-label"/>
+            <Label fx:id="pendingCreditsLabel" text="0" styleClass="kpi-value kpi-danger"/>
+        </VBox>
+    </HBox>
+
+    <!-- Recent Transactions -->
+    <Label text="Recent Transactions" styleClass="section-title"/>
+    <TableView fx:id="recentTransactionsTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colInvoiceNum" text="Invoice #" prefWidth="160"/>
+            <TableColumn fx:id="colStatus" text="Status" prefWidth="100"/>
+            <TableColumn fx:id="colDate" text="Date" prefWidth="200"/>
+            <TableColumn fx:id="colTotal" text="Total" prefWidth="120"/>
+        </columns>
+    </TableView>
+
+    <!-- Low Stock -->
+    <Label text="Low Stock Alerts" styleClass="section-title"/>
+    <TableView fx:id="lowStockTable" prefHeight="200">
+        <columns>
+            <TableColumn fx:id="colProductName" text="Product" prefWidth="300"/>
+            <TableColumn fx:id="colStockQty" text="Stock" prefWidth="100"/>
+            <TableColumn fx:id="colMinStock" text="Min Stock" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+    <Button text="Refresh" onAction="#handleRefresh" styleClass="secondary-button"/>
+</VBox>

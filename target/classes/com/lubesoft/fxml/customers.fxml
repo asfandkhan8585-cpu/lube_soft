@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.sunjavatech.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.lubesoft.controller.CustomerController"
+            styleClass="content-view">
+    <top>
+        <HBox spacing="12" alignment="CENTER_LEFT" styleClass="toolbar">
+            <padding><Insets top="12" right="16" bottom="12" left="16"/></padding>
+            <Label text="Customers" styleClass="page-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <TextField fx:id="searchField" promptText="Search customers..." prefWidth="220"
+                       onAction="#handleSearch"/>
+            <Button text="Search" onAction="#handleSearch" styleClass="secondary-button"/>
+            <Button text="New Customer" onAction="#handleNewCustomer" styleClass="primary-button"/>
+        </HBox>
+    </top>
+
+    <center>
+        <SplitPane dividerPositions="0.45">
+            <!-- Left: Customer list + form -->
+            <VBox spacing="8">
+                <TableView fx:id="customersTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colCustName" text="Name" prefWidth="180"/>
+                        <TableColumn fx:id="colCustPhone" text="Phone" prefWidth="130"/>
+                        <TableColumn fx:id="colCustCompany" text="Company" prefWidth="150"/>
+                        <TableColumn fx:id="colCustBalance" text="Balance" prefWidth="100"/>
+                    </columns>
+                </TableView>
+
+                <VBox spacing="6" styleClass="form-panel">
+                    <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+                    <Label text="Customer Details" styleClass="section-title"/>
+                    <HBox spacing="8">
+                        <VBox HBox.hgrow="ALWAYS">
+                            <Label text="Name *"/>
+                            <TextField fx:id="custNameField" promptText="Full name"/>
+                        </VBox>
+                        <VBox HBox.hgrow="ALWAYS">
+                            <Label text="Phone"/>
+                            <TextField fx:id="custPhoneField" promptText="Phone number"/>
+                        </VBox>
+                    </HBox>
+                    <HBox spacing="8">
+                        <VBox HBox.hgrow="ALWAYS">
+                            <Label text="Email"/>
+                            <TextField fx:id="custEmailField" promptText="Email"/>
+                        </VBox>
+                        <VBox HBox.hgrow="ALWAYS">
+                            <Label text="Company"/>
+                            <TextField fx:id="custCompanyField" promptText="Company"/>
+                        </VBox>
+                    </HBox>
+                    <HBox spacing="8" alignment="CENTER_LEFT">
+                        <VBox HBox.hgrow="ALWAYS">
+                            <Label text="Credit Limit"/>
+                            <TextField fx:id="custCreditLimitField" text="0"/>
+                        </VBox>
+                        <Label fx:id="custBalanceLabel" text="Balance: 0.00" styleClass="balance-label"/>
+                    </HBox>
+                    <HBox spacing="8">
+                        <Button text="Save" onAction="#handleSaveCustomer" styleClass="primary-button"/>
+                        <Button text="Delete" onAction="#handleDeleteCustomer" styleClass="danger-button"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+
+            <!-- Right: Vehicles + history -->
+            <VBox spacing="8">
+                <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+                <Label text="Vehicles" styleClass="section-title"/>
+                <TableView fx:id="vehiclesTable" prefHeight="200">
+                    <columns>
+                        <TableColumn fx:id="colVehiclePlate" text="Plate" prefWidth="110"/>
+                        <TableColumn fx:id="colVehicleMake" text="Make" prefWidth="100"/>
+                        <TableColumn fx:id="colVehicleModel" text="Model" prefWidth="100"/>
+                        <TableColumn fx:id="colVehicleYear" text="Year" prefWidth="70"/>
+                    </columns>
+                </TableView>
+
+                <Label text="Service History" styleClass="section-title"/>
+                <TableView fx:id="historyTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colHistDate" text="Date" prefWidth="130"/>
+                        <TableColumn fx:id="colHistMileage" text="Mileage" prefWidth="100"/>
+                        <TableColumn fx:id="colHistOil" text="Oil Grade" prefWidth="110"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </SplitPane>
+    </center>
+</BorderPane>
