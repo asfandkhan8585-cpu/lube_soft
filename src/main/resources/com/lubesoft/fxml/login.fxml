@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.lubesoft.controller.LoginController"
+            styleClass="login-root">
+    <center>
+        <VBox spacing="16" alignment="CENTER" maxWidth="360"
+              styleClass="login-card">
+            <padding><Insets top="40" right="40" bottom="40" left="40"/></padding>
+
+            <Label text="LubeSoft POS" styleClass="login-title"/>
+            <Label text="Quick-Lube Workshop" styleClass="login-subtitle"/>
+
+            <Label fx:id="trialLabel" text="" styleClass="trial-label" visible="false"/>
+
+            <TextField fx:id="usernameField" promptText="Username" styleClass="login-field"/>
+            <PasswordField fx:id="passwordField" promptText="Password" styleClass="login-field"/>
+
+            <Label fx:id="errorLabel" text="" styleClass="error-label" visible="false" wrapText="true"/>
+
+            <Button fx:id="loginButton" text="Login" onAction="#handleLogin"
+                    styleClass="primary-button" maxWidth="Infinity"/>
+            <Button text="Activate License" onAction="#handleActivate"
+                    styleClass="link-button"/>
+        </VBox>
+    </center>
+</BorderPane>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.lubesoft.controller.EmployeeController"
+            styleClass="content-view">
+    <top>
+        <HBox spacing="12" alignment="CENTER_LEFT" styleClass="toolbar">
+            <padding><Insets top="12" right="16" bottom="12" left="16"/></padding>
+            <Label text="Employees &amp; Time Clock" styleClass="page-title"/>
+        </HBox>
+    </top>
+
+    <center>
+        <HBox spacing="0">
+            <!-- Left: Time clock + log -->
+            <VBox spacing="12" HBox.hgrow="ALWAYS" styleClass="form-panel">
+                <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+                <Label text="Time Clock" styleClass="section-title"/>
+                <Label fx:id="clockStatusLabel" text="Not clocked in" styleClass="clock-status"/>
+                <HBox spacing="8">
+                    <Button fx:id="clockInButton" text="Clock In" onAction="#handleClockIn"
+                            styleClass="primary-button"/>
+                    <Button fx:id="clockOutButton" text="Clock Out" onAction="#handleClockOut"
+                            styleClass="danger-button" disable="true"/>
+                </HBox>
+
+                <Label text="My Time Entries" styleClass="section-title"/>
+                <TableView fx:id="timeEntriesTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colClockIn" text="Clock In" prefWidth="200"/>
+                        <TableColumn fx:id="colClockOut" text="Clock Out" prefWidth="200"/>
+                    </columns>
+                </TableView>
+            </VBox>
+
+            <!-- Right: Employee management (ADMIN only) -->
+            <VBox spacing="8" prefWidth="340" styleClass="form-panel">
+                <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+                <Label text="Employee Management" styleClass="section-title"/>
+
+                <TableView fx:id="employeesTable" prefHeight="220">
+                    <columns>
+                        <TableColumn fx:id="colEmpUsername" text="Username" prefWidth="150"/>
+                        <TableColumn fx:id="colEmpRole" text="Role" prefWidth="120"/>
+                    </columns>
+                </TableView>
+
+                <Label text="Username"/>
+                <TextField fx:id="empUsernameField" promptText="Username"/>
+                <Label text="Password (leave blank to keep)"/>
+                <PasswordField fx:id="empPasswordField" promptText="Password"/>
+                <Label text="Role"/>
+                <ComboBox fx:id="empRoleCombo" maxWidth="Infinity"/>
+                <CheckBox fx:id="empActiveCheck" text="Active" selected="true"/>
+
+                <HBox spacing="8">
+                    <Button text="Save" onAction="#handleSaveEmployee" styleClass="primary-button"/>
+                    <Button text="New" onAction="#handleNewEmployee" styleClass="secondary-button"/>
+                </HBox>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>

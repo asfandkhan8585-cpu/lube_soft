@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.lubesoft.controller.ReportsController"
+      spacing="12" styleClass="content-view">
+    <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+
+    <Label text="Reports" styleClass="page-title"/>
+
+    <!-- Date range + actions -->
+    <HBox spacing="12" alignment="CENTER_LEFT" styleClass="toolbar">
+        <Label text="From:"/>
+        <DatePicker fx:id="fromDatePicker"/>
+        <Label text="To:"/>
+        <DatePicker fx:id="toDatePicker"/>
+        <Button text="Run Report" onAction="#handleRunReport" styleClass="primary-button"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Export PDF" onAction="#handleExportPdf" styleClass="secondary-button"/>
+        <Button text="Export Excel" onAction="#handleExportExcel" styleClass="secondary-button"/>
+    </HBox>
+
+    <!-- Report tabs -->
+    <TabPane fx:id="reportTabs" VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE">
+        <!-- Sales tab -->
+        <Tab text="Sales">
+            <VBox spacing="8">
+                <padding><Insets top="8" right="0" bottom="0" left="0"/></padding>
+                <TableView fx:id="salesTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colSalesInv" text="Invoice #" prefWidth="160"/>
+                        <TableColumn fx:id="colSalesDate" text="Date" prefWidth="180"/>
+                        <TableColumn fx:id="colSalesPayment" text="Payment" prefWidth="120"/>
+                        <TableColumn fx:id="colSalesTotal" text="Total" prefWidth="120"/>
+                    </columns>
+                </TableView>
+                <Label fx:id="salesTotalLabel" text="Total: 0.00" styleClass="total-label"/>
+            </VBox>
+        </Tab>
+
+        <!-- Credit Aging tab -->
+        <Tab text="Credit Aging">
+            <VBox spacing="8">
+                <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+                <Label text="Click 'Run Report' to load credit aging data." styleClass="hint-label"/>
+            </VBox>
+        </Tab>
+
+        <!-- Inventory Leakage tab -->
+        <Tab text="Inv. Leakage">
+            <VBox spacing="8">
+                <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+                <Label text="Click 'Run Report' to load inventory leakage data." styleClass="hint-label"/>
+            </VBox>
+        </Tab>
+
+        <!-- Employee Productivity tab -->
+        <Tab text="Productivity">
+            <VBox spacing="8">
+                <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+                <Label text="Click 'Run Report' to load employee productivity data." styleClass="hint-label"/>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>

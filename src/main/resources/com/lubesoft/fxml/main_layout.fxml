@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.lubesoft.controller.MainLayoutController"
+            fx:id="rootPane">
+    <!-- Left sidebar -->
+    <left>
+        <VBox fx:id="sidebar" styleClass="sidebar" spacing="0" minWidth="200" prefWidth="200">
+            <padding><Insets top="0" right="0" bottom="0" left="0"/></padding>
+
+            <!-- App title -->
+            <VBox styleClass="sidebar-header" alignment="CENTER">
+                <padding><Insets top="24" right="16" bottom="24" left="16"/></padding>
+                <Label text="LubeSoft" styleClass="sidebar-title"/>
+                <Label text="POS System" styleClass="sidebar-subtitle"/>
+            </VBox>
+
+            <!-- Navigation buttons -->
+            <Button fx:id="btnDashboard" text="📊  Dashboard" onAction="#showDashboard"
+                    styleClass="sidebar-btn" maxWidth="Infinity"/>
+            <Button fx:id="btnPOS" text="💰  Point of Sale" onAction="#showPOS"
+                    styleClass="sidebar-btn" maxWidth="Infinity"/>
+            <Button fx:id="btnInventory" text="📦  Inventory" onAction="#showInventory"
+                    styleClass="sidebar-btn" maxWidth="Infinity"/>
+            <Button fx:id="btnCustomers" text="👥  Customers" onAction="#showCustomers"
+                    styleClass="sidebar-btn" maxWidth="Infinity"/>
+            <Button fx:id="btnReports" text="📈  Reports" onAction="#showReports"
+                    styleClass="sidebar-btn" maxWidth="Infinity"/>
+            <Button fx:id="btnEmployees" text="👤  Employees" onAction="#showEmployees"
+                    styleClass="sidebar-btn" maxWidth="Infinity"/>
+
+            <!-- Spacer -->
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <!-- User info + logout -->
+            <VBox styleClass="sidebar-footer">
+                <padding><Insets top="12" right="16" bottom="12" left="16"/></padding>
+                <Label fx:id="userLabel" text="User" styleClass="sidebar-user"/>
+                <Button text="Logout" onAction="#handleLogout" styleClass="logout-button" maxWidth="Infinity"/>
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- Content area (center is swapped by controller) -->
+    <center>
+        <StackPane fx:id="contentArea" styleClass="content-area">
+            <Label text="Loading..." styleClass="loading-label"/>
+        </StackPane>
+    </center>
+</BorderPane>
